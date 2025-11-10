@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área Adm</title>
+    <link rel="stylesheet" href="../styles/styleCadastro.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+</head>
+<body >
+    <h1>O que o <span>Adm</span> <br> gostaria de fazer?</h1>
+
+    <button id="btnCriar" class="btn-navegacao-principal">Cadastrar novo Usuário</button>
+
+        <div id="divCriar" class="escondido">
+            <h4>Digite as Informações do Usuário</h4>
+        <form action="">
+    
+                <label for="inputConta">Digite o nome:</label><br>
+                <input type="text" required id="inputConta" autofocus><br>
+                <label for="inputSenha">Digite sua senha:</label><br>
+                <div class="input-wrapper">
+    
+                    <input type="password" required id="inputSenha" name="senha">
+                    <i class="fa fa-eye eye-icon" onclick="alternarVisibilidade(event, 'inputSenha')"></i>
+    
+                </div>
+    
+                <label for="inputSenha">Confirme sua senha:</label><br>
+                    <div class="input-wrapper">
+                    <input type="password" required id="confirmaSenha" name="senha">
+                    <i class="fa fa-eye eye-icon" onclick="alternarVisibilidade(event, 'inputSenha')"></i>
+                </div>
+    
+                <p id="msgErro" style="color: red;"></p>
+    
+              <button id="salvar" type="button">Cadastrar Novo Usuário</button>
+        </form> 
+      </div>
+
+    <button id="mostrar" class="btn-navegacao-principal">Mostrar Usuários</button>
+
+    <div id="divMostrar" class="escondido">
+        <table id="tabelaMostrar" border="4">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Senha</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody id="tabelaBody"></tbody>
+        </table>
+    </div>
+
+    <div id="divConfirmacao" class="escondido">
+        <h4>Você tem certeza em fazer essa ação?</h4>
+        <div class="botoes-confirmacao">
+            <button id="sim">Sim</button>
+            <button id="nao">Não</button>
+        </div>
+    </div>
+
+<div id="overlay"></div>
+
+<script src="../scripts/cadastro.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing</title>
+    <link rel="stylesheet" href="../styles/landing.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+</head>
+<body>
+    <header>
+        <i class="fa-solid fa-magnifying-glass"></i> 
+        <select id="selectIdioma" name="idioma">
+            <option value="portugues">PT-BR</option>
+            <option value="ingles">EN</option>
+            <option value="japones">JP</option>
+            <option value="mandarim">ZH</option>
+        </select>
+        <button id="login">Login</button>
+    </header>
+    
+    <main>
+
+
+        <div id="propaganda">
+            <h1>Filmes, séries, documentários, animes e muito mais!</h1>
+            <h2>Assista a filmes e séries com anúncios e aproveite entrega grátis e rápida em diversos produtos. Tendo os preços mais acessíveis e qualidade acima do padrão!.</h2>
+        </div>
+
+
+        <div class="toggle-planos controle">
+
+        <input type="radio" id="anual" name="plano" value="anual" class="ativo" checked>
+        <label for="anual" class="segmento">Anual</label>
+
+        <input type="radio" id="mensal" name="plano" value="mensal">
+        <label for="mensal" class="segmento">Mensal</label>
+
+        <div class="seletor"></div>
+
+    </div>
+
+        <div class="container-planos">
+            <div class="card-plano">
+                <h3 class="preco">R$179,99</h3>
+                <h4>Plano Standard</h4>
+                <ul>
+                    <li>Add a cada 5 minutos</li>
+                    <li>Filmes e séries limitados</li>
+                    <li>Não pode dividir conta</li>
+                    <li>Espera em lançamentos</li>
+                    <li class="visivel">Parcelado em até 4x</li>
+                </ul>
+            </div>
+
+            <div class="card-plano">
+                <h3 class="preco">R$199,99</h3>
+                <h4>Plano Pro</h4>
+                <ul>
+                    <li>De 2 a 3 anuncios por episódios</li>
+                    <li>De 7 a 10 anuncios por filme</li>
+                    <li>Não pode dividir conta</li>
+                    <li>Sem espera no lançamento</li>
+                    <li class="visivel">Parcelado em até 8x</li>
+                </ul>
+            </div>
+
+            <div class="card-plano destaque">
+                <div class="melhor-opcao">Melhor opção</div>
+                <h3 id="pro" class="preco">R$359,99</h3>
+                <h4>Plano Premium</h4>
+                <ul>
+                    <li>SEM ANUNCIOS</li>
+                    <li>PODE DIVIDIR CONTA</li>
+                    <li>RECEBE TRAILLERS E SPOILERS EXCLUSIVOS</li>
+                    <li>PARCELADO EM ATÉ 12X</li>
+                    <li class="visivel">PODE BAIXAR A SERIE PARA ASSISTIR SEM INTERNET</li>
+                </ul>
+            </div>
+        </div>
+    </main>
+
+    <div id="entradaSecreta" class="escondido">
+        <h4>Gostaria de entrar na Área restríta?</h4>
+        <label for="nomeAdm">Digite sua Conta</label>
+        <input type="text" id="nomeAdm" placeholder="Conta">
+        <label for="senhaAdm">Digite sua Senha</label>
+        <input type="password" id="senhaAdm" placeholder="Senha">
+    </div>
+
+<script src="../scripts/landing.js"></script>
+</body>
+</html>

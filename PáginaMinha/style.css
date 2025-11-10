@@ -1,0 +1,34 @@
+html {
+    scroll-behavior: smooth;
+}
+body{
+    text-align: center;
+    color: white;
+    font: normal 20px arial;
+    background-color: cadetblue;
+}
+div{
+    font: normal 20px arial;
+    color: black;
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    width: 540px;
+    height: 180px;
+    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.5);
+    box-shadow: 20000px;
+    margin-left: 330px;
+    padding: 10px;
+}
+footer{
+    margin-top: 50px;
+}
+#links{
+    justify-content: space-around;
+    display: flex;
+    text-align: center;
+    color: antiquewhite;
+}
+a{
+    color: aliceblue;
+}

@@ -1,0 +1,318 @@
+body {
+    color: aliceblue;
+    font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+    background: radial-gradient(circle at center, #007bff 0%, #004080 20%, #001a33 90%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+    margin: 0;
+    position: relative;
+}
+
+
+.escondido {
+    display: none !important;
+}
+
+
+#planos-section {
+    margin-top: 50px;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+#planos-section h2 {
+    font-size: 32px;
+    color: black;
+    margin-bottom: 10px;
+}
+
+#planos-section h2 span {
+    color: #1f8e3f;
+}
+
+#planos-section #p-planos {
+    max-width: 600px;
+    margin: 20px auto 40px;
+    color: black;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* ESTILO DO TOGGLE SWITCH PARA PLANOS */
+
+.toggle-planos input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    padding: 40px;
+}
+
+.toggle-planos {
+    position: relative;
+    display: flex;
+    background:  var(--cor-secundaria-azul);
+    border-radius: 50px;
+    padding: 4px;
+    margin: 0 auto 40px;
+    width: 250px;
+    height: 48px;
+}
+
+.toggle-planos label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    font-size: 1.1rem;
+    width: 50%;
+    padding: 10px 20px;
+    z-index: 2;
+    cursor: pointer;
+    transition: color 0.3s ease;
+    font-weight: 100;
+
+}
+
+.toggle-planos .seletor {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background:  var(--cor-primaria-azul);
+    border-radius: 50px;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    font-weight: 100;
+    z-index: 1;
+}
+
+.toggle-planos #mensal:checked ~ .seletor {
+    transform: translateX(100%);
+}
+
+.toggle-planos #anual:checked + label {
+    color: white;
+
+}
+
+.toggle-planos #mensal:checked + label {
+    color: #fff;
+    font-weight: 900;
+}
+.toggle-planos #anual:checked + label {
+    color: white;
+    font-weight: 900;
+}
+
+.toggle-planos #mensal:checked + label {
+    color: white;
+
+}
+.container-planos {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+}
+
+
+
+
+
+/* Definição de Cores em Variáveis para facilitar a manutenção */
+:root {
+    --cor-primaria-azul: #007bff; /* Azul forte para destaque e botões */
+    --cor-secundaria-azul: #0a4f94; /* Azul mais escuro para cards/fundo */
+    --cor-fundo-header: #0e1115; /* Fundo do cabeçalho */
+    --cor-texto-claro: #ffffff;
+    --cor-texto-cinza: #ccc;
+    --cor-verde-destaque: #1f8e3f; /* Mantendo o verde original do destaque se for um elemento fixo */
+}
+
+/* Reset básico e Estilos do Body */
+body {
+    color: var(--cor-texto-claro); /* Cor do texto principal */
+    font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
+    /* Fundo escuro com gradiente azul, similar ao seu original */
+    background: radial-gradient(circle at center, #004080 0%, #001a33 70%); 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+    /* Removendo flex e altura total para permitir rolagem natural */
+    display: block; 
+    height: auto;
+    margin: 0;
+    position: relative;
+    padding-top: 60px; /* Adiciona espaço para o header fixo */
+}
+
+/* --- HEADER (Cabeçalho Estilo Prime) --- */
+header {
+    /* Fixo no topo e largura total */
+    position: fixed; 
+    top: 0;
+    left: 0;
+    width: 100%;
+    
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-end; /* Alinha todos os itens à direita */
+    
+    background-color: var(--cor-fundo-header); 
+    height: 60px; /* Altura fixa */
+    padding: 0 20px;
+    z-index: 1000; /* Garante que fique acima de tudo */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+header i {
+    /* Ícone de busca */
+    font-size: 20px;
+    color: var(--cor-texto-claro);
+    margin-right: 25px;
+    cursor: pointer;
+}
+
+#selectIdioma {
+    /* Dropdown de idioma */
+    text-align: center;
+    background-color: black;
+    border: none;
+    color: var(--cor-texto-claro);
+    font-size: 16px;
+    margin-right: 25px;
+    appearance: none; /* Remove a aparência nativa */
+    padding-right: 20px; /* Espaço para a seta (se houver) */
+    cursor: pointer;
+}
+
+#login {
+    /* Botão de Login (Agora "Assinar" ou "Entrar") */
+    background-color: var(--cor-primaria-azul); /* Azul de destaque */
+    color: var(--cor-texto-claro);
+    border: none;
+    border-radius: 4px;
+    padding: 8px 15px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    width: 200px;
+    margin-right: 50px;
+}
+
+#login:hover {
+    background-color: #0069d9;
+}
+
+/* ------------------------------------- */
+
+#propaganda {
+    /* Garante que o conteúdo não fique debaixo do header */
+    margin-top: 80px; 
+    text-align: center;
+    padding: 0 20px;
+}
+
+#planos-section {
+    margin-top: 50px;
+    text-align: center;
+    padding: 60px 20px;
+}
+
+#planos-section h2 {
+    font-size: 32px;
+    color: var(--cor-texto-claro); /* Mudado para branco */
+    margin-bottom: 10px;
+}
+
+#planos-section h2 span {
+    color: var(--cor-primaria-azul); /* Destaque em azul */
+}
+
+#planos-section #p-planos {
+    max-width: 600px;
+    margin: 20px auto 40px;
+    color: var(--cor-texto-cinza); /* Cinza claro */
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+/* ESTILO DOS CARDS DE PLANO (TEMA AZUL) */
+.card-plano {
+    background: var(--cor-secundaria-azul); /* Fundo azul escuro */
+    border-radius: 12px;
+    padding: 30px;
+    width: 300px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid #1a5796; /* Borda azul mais clara */
+}
+
+.card-plano:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+}
+
+.card-plano h3 {
+    font-size: 1.8rem;
+    color: var(--cor-primaria-azul); /* Preço em azul */
+    margin-bottom: 5px;
+}
+
+.card-plano #pro {
+    color: var(--cor-texto-claro);
+}
+
+.card-plano h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: var(--cor-texto-cinza);
+}
+
+.card-plano ul li {
+    margin-bottom: 10px;
+    font-size: 0.9rem;
+    color: var(--cor-texto-cinza);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Destaque Premium (Mantendo o verde ou mudando para azul mais forte) */
+.card-plano.destaque {
+    background: var(--cor-primaria-azul); /* Fundo do destaque em azul primário */
+    color: #fff;
+    transform: scale(1.08);
+    position: relative;
+    border-color: #fff;
+}
+
+.card-plano.destaque:hover {
+    transform: scale(1.12);
+}
+
+.card-plano.destaque h3,
+.card-plano.destaque h4,
+.card-plano.destaque ul li {
+    color: #fff;
+}
+
+.melhor-opcao {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: #fff;
+    color: var(--cor-primaria-azul); /* Cor do texto em azul */
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 10px;
+}
