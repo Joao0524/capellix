@@ -67,3 +67,20 @@ const botaoLogin = document.getElementById('login')
 botaoLogin.addEventListener('click', () =>{
     window.location.href = './login.html'
 })
+const overlay = document.getElementById("novoOverlay");
+const entradaSecreta = document.getElementById("entradaSecreta");
+
+const observer = new MutationObserver(() => {
+  const visivel = !entradaSecreta.classList.contains("escondido");
+  overlay.style.display = visivel ? "flex" : "none";
+});
+
+observer.observe(entradaSecreta, { attributes: true, attributeFilter: ["class"] });
+
+overlay.addEventListener("click", (e) => {
+  if (e.target === overlay) {
+    entradaSecreta.classList.add("escondido");
+    overlay.style.display = "none";
+  }
+});
+
