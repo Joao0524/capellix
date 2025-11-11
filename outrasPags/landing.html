@@ -81,16 +81,27 @@
     </main>
 
     <div id="novoOverlay">
-        <div id="entradaSecreta">
+        <div id="entradaSecreta" class="escondido">
             <h4>Gostaria de entrar na Área restríta?</h4>
             <label for="nomeAdm">Digite sua Conta</label>
-            <input type="text" id="nomeAdm" placeholder="Conta">
+            <input type="text" id="nomeAdm" placeholder="Conta"> <br>
             <label for="senhaAdm">Digite sua Senha</label>
             <input type="password" id="senhaAdm" placeholder="Senha">
+            <button id="entraAdm">Entrar</button>
         </div>
         </div>
 
+        <div id="loading-overlay" class="loading-overlay">
+        <div style="text-align:center;">
+        <img src="" alt="" style="width:520px; margin-bottom:20px;">
+        <div class="progress-bar-container">
+            <div class="progress-bar"></div>
+        </div>
+        </div>
+    </div>
+    
 
+<script src="../scripts/loading.js"></script>
 <script src="../scripts/landing.js"></script>
 </body>
 </html>

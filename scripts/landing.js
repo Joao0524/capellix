@@ -1,13 +1,14 @@
 const divSecreta = document.getElementById("entradaSecreta")
 
 document.addEventListener('keydown', (event) => {
-    if (event.key.toLowerCase() === 'j' && (event.ctrlKey || event.metaKey)) {
-        event.preventDefault();
+  if (event.key.toLowerCase() === 'j' && (event.ctrlKey || event.metaKey)) {
+    event.preventDefault();
 
-        divSecreta.classList.remove('escondido');
-
-    }
+    divSecreta.classList.remove('escondido');
+    overlay.style.display = "flex"; // <-- ESSENCIAL
+  }
 });
+
 const controlePlanos = document.querySelector('.controle');
 
 function atualizarPrecos() {
@@ -65,22 +66,35 @@ if (controlePlanos) {
 const botaoLogin = document.getElementById('login')
 
 botaoLogin.addEventListener('click', () =>{
-    window.location.href = './login.html'
+    window.location.href = '../login.html'
 })
 const overlay = document.getElementById("novoOverlay");
-const entradaSecreta = document.getElementById("entradaSecreta");
+
 
 const observer = new MutationObserver(() => {
-  const visivel = !entradaSecreta.classList.contains("escondido");
+  const visivel = !divSecreta.classList.contains("escondido");
   overlay.style.display = visivel ? "flex" : "none";
 });
 
-observer.observe(entradaSecreta, { attributes: true, attributeFilter: ["class"] });
+observer.observe(divSecreta, { attributes: true, attributeFilter: ["class"] });
 
 overlay.addEventListener("click", (e) => {
   if (e.target === overlay) {
-    entradaSecreta.classList.add("escondido");
+    divSecreta.classList.add("escondido");
     overlay.style.display = "none";
   }
 });
+
+const buttonEntrar = document.getElementById("entraAdm")
+const nomeAdm = document.getElementById("nomeAdm")
+const senhaAdm = document.getElementById('senhaAdm')
+
+buttonEntrar.addEventListener("click", () =>{
+    if(nomeAdm.value === "Carlinhos" && senhaAdm.value === "LINDAOS2S2") {
+        window.location.href = './cadastro.html'
+    }else {
+        divSecreta.classList.add("escondido");
+        overlay.style.display = "none";
+    }
+})
 
