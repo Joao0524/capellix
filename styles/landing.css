@@ -125,54 +125,45 @@ body {
 
 
 
-/* Definição de Cores em Variáveis para facilitar a manutenção */
 :root {
-    --cor-primaria-azul: #007bff; /* Azul forte para destaque e botões */
-    --cor-secundaria-azul: #0a4f94; /* Azul mais escuro para cards/fundo */
-    --cor-fundo-header: #0e1115; /* Fundo do cabeçalho */
+    --cor-primaria-azul: #007bff;
+    --cor-secundaria-azul: #0a4f94;
+    --cor-fundo-header: #0e1115; 
     --cor-texto-claro: #ffffff;
     --cor-texto-cinza: #ccc;
-    --cor-verde-destaque: #1f8e3f; /* Mantendo o verde original do destaque se for um elemento fixo */
+    --cor-verde-destaque: #1f8e3f; 
 }
 
-/* Reset básico e Estilos do Body */
 body {
-    color: var(--cor-texto-claro); /* Cor do texto principal */
+    color: var(--cor-texto-claro); 
     font-family: 'Lucida Sans', Geneva, Verdana, sans-serif;
-    /* Fundo escuro com gradiente azul, similar ao seu original */
     background: radial-gradient(circle at center, #004080 0%, #001a33 70%); 
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-    /* Removendo flex e altura total para permitir rolagem natural */
     display: block; 
     height: auto;
     margin: 0;
     position: relative;
-    padding-top: 60px; /* Adiciona espaço para o header fixo */
+    padding-top: 60px;
 }
 
-/* --- HEADER (Cabeçalho Estilo Prime) --- */
 header {
-    /* Fixo no topo e largura total */
     position: fixed; 
     top: 0;
     left: 0;
     width: 100%;
-    
     display: flex; 
     align-items: center; 
-    justify-content: flex-end; /* Alinha todos os itens à direita */
-    
+    justify-content: flex-end; 
     background-color: var(--cor-fundo-header); 
-    height: 60px; /* Altura fixa */
+    height: 60px; 
     padding: 0 20px;
-    z-index: 1000; /* Garante que fique acima de tudo */
+    z-index: 1000; 
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
 }
 
 header i {
-    /* Ícone de busca */
     font-size: 20px;
     color: var(--cor-texto-claro);
     margin-right: 25px;
@@ -180,21 +171,19 @@ header i {
 }
 
 #selectIdioma {
-    /* Dropdown de idioma */
     text-align: center;
     background-color: black;
     border: none;
     color: var(--cor-texto-claro);
     font-size: 16px;
     margin-right: 25px;
-    appearance: none; /* Remove a aparência nativa */
-    padding-right: 20px; /* Espaço para a seta (se houver) */
+    appearance: none; 
+    padding-right: 20px; 
     cursor: pointer;
 }
 
 #login {
-    /* Botão de Login (Agora "Assinar" ou "Entrar") */
-    background-color: var(--cor-primaria-azul); /* Azul de destaque */
+    background-color: var(--cor-primaria-azul);
     color: var(--cor-texto-claro);
     border: none;
     border-radius: 4px;
@@ -211,10 +200,8 @@ header i {
     background-color: #0069d9;
 }
 
-/* ------------------------------------- */
 
 #propaganda {
-    /* Garante que o conteúdo não fique debaixo do header */
     margin-top: 80px; 
     text-align: center;
     padding: 0 20px;
@@ -228,31 +215,30 @@ header i {
 
 #planos-section h2 {
     font-size: 32px;
-    color: var(--cor-texto-claro); /* Mudado para branco */
+    color: var(--cor-texto-claro);
     margin-bottom: 10px;
 }
 
 #planos-section h2 span {
-    color: var(--cor-primaria-azul); /* Destaque em azul */
+    color: var(--cor-primaria-azul); 
 }
 
 #planos-section #p-planos {
     max-width: 600px;
     margin: 20px auto 40px;
-    color: var(--cor-texto-cinza); /* Cinza claro */
+    color: var(--cor-texto-cinza);
     font-size: 1.2rem;
     text-align: center;
 }
 
-/* ESTILO DOS CARDS DE PLANO (TEMA AZUL) */
 .card-plano {
-    background: var(--cor-secundaria-azul); /* Fundo azul escuro */
+    background: var(--cor-secundaria-azul);
     border-radius: 12px;
     padding: 30px;
     width: 300px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid #1a5796; /* Borda azul mais clara */
+    border: 1px solid #1a5796; 
 }
 
 .card-plano:hover {
@@ -262,7 +248,7 @@ header i {
 
 .card-plano h3 {
     font-size: 1.8rem;
-    color: var(--cor-primaria-azul); /* Preço em azul */
+    color: var(--cor-primaria-azul);
     margin-bottom: 5px;
 }
 
@@ -286,9 +272,8 @@ header i {
     gap: 8px;
 }
 
-/* Destaque Premium (Mantendo o verde ou mudando para azul mais forte) */
 .card-plano.destaque {
-    background: var(--cor-primaria-azul); /* Fundo do destaque em azul primário */
+    background: var(--cor-primaria-azul); 
     color: #fff;
     transform: scale(1.08);
     position: relative;
@@ -310,7 +295,7 @@ header i {
     top: 15px;
     right: 15px;
     background: #fff;
-    color: var(--cor-primaria-azul); /* Cor do texto em azul */
+    color: var(--cor-primaria-azul); 
     font-size: 0.7rem;
     font-weight: 700;
     padding: 3px 8px;

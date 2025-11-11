@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Capellix</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/loading.css">
 </head>
 
 <body>
@@ -359,14 +360,25 @@
         </section>
     </main>
 
-    ---
-
     <footer>
         <h3>Viu algum problema no site? Por favor nos notifique:</h3>
         <ul>
             <li><a href="PáginaMinha/index.html" target="_blank">João Pedro de Sousa Capelli</a></li>
         </ul>
     </footer>
-</body>
 
+      <div id="loading-overlay" class="loading-overlay">
+    <div style="text-align:center;">
+      <img src="" alt="" style="width:520px; margin-bottom:20px;">
+      <div class="progress-bar-container">
+        <div class="progress-bar"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="overlay"></div>
+
+  <script src="../scripts/loading.js"></script>
+
+</body>
 </html>

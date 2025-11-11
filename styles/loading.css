@@ -1,4 +1,3 @@
-/* ===== TELA DE CARREGAMENTO PARA TUDO ===== */
 .loading-overlay {
     position: fixed;
     top: 0;
@@ -13,13 +12,11 @@
     transition: opacity 0.5s ease, visibility 0.5s ease;
 }
 
-/* Oculta suavemente */
 .hidden {
     opacity: 0;
     visibility: hidden;
 }
 
-/* Container da barra */
 .progress-bar-container {
     width: 100%;
     max-width: 900px;
@@ -31,7 +28,6 @@
 
 }
 
-/* Barra animada */
 .progress-bar {
     width: 0px;
     height: 100%;
@@ -39,7 +35,6 @@
     animation: fillProgress 2s ease-in-out forwards;
 }
 
-/* Animação da barra */
 @keyframes fillProgress {
     from { width: 0; }
     to { width: 100%; }

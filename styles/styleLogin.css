@@ -36,7 +36,6 @@ img:hover {
   justify-content: space-between;
 }
 
-/* MODAL DE LOGIN */
 #divSenha {
   position: fixed;
   color: black;
@@ -76,7 +75,6 @@ img:hover {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* Botão ENVIAR */
 input[type="submit"] {
   border: none;
   display: flex;
@@ -102,7 +100,6 @@ input[type="button"]:hover {
   background-color: #2f6631;
 }
 
-/* Fundo escurecido */
 #overlay {
   position: fixed;
   top: 0;
