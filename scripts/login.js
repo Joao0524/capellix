@@ -47,7 +47,7 @@ form.addEventListener('submit', (event) => {
   msgErro.innerText = '';
   divSenha.classList.remove('visivel');
   overlay.classList.remove('visivel');
-  window.location.href = '../../index.html';
+  window.location.href = 'index.html';
 });
 
 document.addEventListener('click', (event) => {

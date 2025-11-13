@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+  <link rel="stylesheet" href="../styles/styleLogin.css">
+</head>
+<body>
+  <div id="site">
+    <main>
+      <h1>Quem está assistindo?</h1>
+      <div id="perfils">
+        <div class="perfil">
+          <img src="../img/giorno.jpeg" alt="Giorno">
+        </div>
+        <div class="perfil">
+          <img src="../img/yoonchae.jpeg" alt="Yoonchae">
+        </div>
+        <div class="perfil">
+          <img src="../img/gus.jpeg" alt="Gus">
+        </div>
+        <div id="divSenha" class="escondido">
+          <form id="modalConteudo">
+            <h4>Faça o login</h4>
+            <label for="inputConta">Digite sua conta:</label><br>
+            <input type="text" required id="inputConta" autofocus><br>
+            <label for="inputSenha">Digite sua senha:</label><br>
+            <div class="input-wrapper">
+              <input type="password" required id="inputSenha" name="senha">
+              <i class="fa fa-eye eye-icon" onclick="alternarVisibilidade(event, 'inputSenha')"></i>
+            </div>
+    
+            <p id="msgErro" style="color: red;"></p>
+            <input type="submit" id="botaoEntrar" value="ENVIAR">
+          </form>
+        </div>
+      </div>
+    </main>
+    <div id="overlay"></div>
+    <script src="../scripts/login.js"></script>
+  </div>
+</body>
+</html>

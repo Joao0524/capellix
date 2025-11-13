@@ -91,7 +91,7 @@ const senhaAdm = document.getElementById('senhaAdm')
 
 buttonEntrar.addEventListener("click", () =>{
     if(nomeAdm.value === "Carlinhos" && senhaAdm.value === "LINDAOS2S2") {
-        window.location.href = './cadastro.html'
+        window.location.href = 'outrasPags/cadastro.html'
     }else {
         divSecreta.classList.add("escondido");
         overlay.style.display = "none";
