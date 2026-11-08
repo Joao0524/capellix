@@ -1,0 +1,146 @@
+name: CI/CD - GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validar páginas HTML
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v7
+
+      - name: Configurar Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: "3.x"
+
+      - name: Verificar estrutura dos arquivos HTML
+        run: |
+          python - <<'PY'
+          from html.parser import HTMLParser
+          from pathlib import Path
+          from urllib.parse import unquote, urlsplit
+          import re
+          import sys
+
+          class Tags(HTMLParser):
+              def __init__(self):
+                  super().__init__()
+                  self.found = set()
+                  self.references = []
+
+              def handle_starttag(self, tag, attrs):
+                  self.found.add(tag.lower())
+                  self.references.extend(value for name, value in attrs if name.lower() in {'href', 'src', 'poster'} and value)
+
+              def handle_startendtag(self, tag, attrs):
+                  self.found.add(tag.lower())
+                  self.references.extend(value for name, value in attrs if name.lower() in {'href', 'src', 'poster'} and value)
+
+          pages = sorted(Path('.').rglob('*.html'))
+          if not pages:
+              print('Nenhum arquivo HTML encontrado.')
+              sys.exit(1)
+
+          required = {'html', 'head', 'title', 'body'}
+          errors = []
+          for page in pages:
+              source = page.read_text(encoding='utf-8')
+              parser = Tags()
+              parser.feed(source)
+              missing = required - parser.found
+              if '<!doctype html' not in source[:512].lower():
+                  missing.add('DOCTYPE HTML')
+              if missing:
+                  errors.append(f"{page}: faltando {', '.join(sorted(missing))}")
+
+              for reference in parser.references:
+                  parsed = urlsplit(reference.strip())
+                  if parsed.scheme or parsed.netloc or not parsed.path:
+                      continue
+                  path = unquote(parsed.path)
+                  if path.startswith('/'):
+                      if not path.startswith('/capellix/'):
+                          errors.append(f'{page}: caminho absoluto fora da base do Pages: {reference}')
+                          continue
+                      target = Path(path.removeprefix('/capellix/'))
+                  else:
+                      target = page.parent / path
+                  target = target.resolve()
+                  if not target.is_relative_to(Path('.').resolve()) or not target.exists():
+                      errors.append(f'{page}: arquivo local não encontrado: {reference}')
+
+          for stylesheet in Path('.').rglob('*.css'):
+              source = stylesheet.read_text(encoding='utf-8')
+              for reference in re.findall(r"url\(\s*['\"]?([^'\")\s]+)", source, flags=re.IGNORECASE):
+                  parsed = urlsplit(reference.strip())
+                  if parsed.scheme or parsed.netloc or not parsed.path:
+                      continue
+                  path = unquote(parsed.path)
+                  if path.startswith('/'):
+                      if not path.startswith('/capellix/'):
+                          errors.append(f'{stylesheet}: caminho absoluto fora da base do Pages: {reference}')
+                          continue
+                      target = Path(path.removeprefix('/capellix/'))
+                  else:
+                      target = stylesheet.parent / path
+                  target = target.resolve()
+                  if not target.is_relative_to(Path('.').resolve()) or not target.exists():
+                      errors.append(f'{stylesheet}: arquivo local não encontrado: {reference}')
+
+          if errors:
+              print('\n'.join(errors))
+              sys.exit(1)
+
+          print(f'{len(pages)} páginas HTML verificadas com sucesso.')
+          PY
+
+  package:
+    name: Preparar site
+    needs: validate
+    runs-on: ubuntu-latest
+    steps:
+      - name: Baixar o repositório
+        uses: actions/checkout@v7
+
+      - name: Configurar GitHub Pages
+        uses: actions/configure-pages@v6
+
+      - name: Montar os arquivos publicados
+        run: |
+          mkdir -p _site
+          cp -R index.html login.html img scripts styles outrasPags "PáginaMinha" _site/
+          touch _site/.nojekyll
+
+      - name: Enviar arquivos para publicação
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    name: Publicar no GitHub Pages
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: package
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Publicar site
+        id: deployment
+        uses: actions/deploy-pages@v5

@@ -1,3 +1,8 @@
+function appUrl(path) {
+    const root = window.location.pathname.includes('/outrasPags/') ? '../' : './';
+    return new URL(path, new URL(root, window.location.href)).href;
+}
+
 const divSecreta = document.getElementById("entradaSecreta")
 
 document.addEventListener('keydown', (event) => {
@@ -66,7 +71,7 @@ if (controlePlanos) {
 const botaoLogin = document.getElementById('login')
 
 botaoLogin.addEventListener('click', () =>{
-    window.location.href = '../login.html'
+    window.location.href = appUrl('login.html')
 })
 const overlay = document.getElementById("novoOverlay");
 
@@ -91,7 +96,7 @@ const senhaAdm = document.getElementById('senhaAdm')
 
 buttonEntrar.addEventListener("click", () =>{
     if(nomeAdm.value === "Carlinhos" && senhaAdm.value === "LINDAOS2S2") {
-        window.location.href = 'outrasPags/cadastro.html'
+        window.location.href = appUrl('outrasPags/cadastro.html')
     }else {
         divSecreta.classList.add("escondido");
         overlay.style.display = "none";
